@@ -1,0 +1,73 @@
+ Write a program to check whether a given number exists in a list.
+
+
+Check whether the first element of a list is greater than the last element.
+
+
+Write a program to check if a list contains more than 5 elements.
+
+
+Check whether the number 10 is present in the list.
+
+
+Write a program to check if the sum of the first two elements is greater than the last element.
+
+
+Check whether all elements in a list are positive numbers.
+
+
+Write a program to check whether a list is empty or not.
+
+
+8.Write a program to check whether a given number exists in a tuple.
+
+
+9.Check whether the first and last elements of a tuple are the same.
+
+
+10.Write a program to check if a tuple has more than 3 elements.
+
+
+11.Check whether a tuple is empty.
+
+
+12.Write a program to check if the maximum value in the tuple is greater than 50.
+
+
+13.Check whether the second element of the tuple is even or odd.
+
+
+14.Write a program to check if a value exists in a set.
+
+
+15.Check whether the set contains more than 4 elements.
+
+
+16.Write a program to check if two sets are equal.
+
+
+17.Check whether the number 5 exists in a set.
+
+
+18.Write a program to check if a set is empty or not.
+
+
+19.Check whether a set is a subset of another set.
+
+
+20.Write a program to check whether a key exists in a dictionary.
+
+
+21.Check whether the dictionary is empty.
+
+
+22.Write a program to check if the value of a specific key is greater than 50.
+
+
+23.Check whether the dictionary contains the key "name".
+
+
+24.Write a program to check whether two dictionaries are equal.
+
+
+25.Check whether the length of a dictionary is greater than 3.
