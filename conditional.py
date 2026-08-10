@@ -6,6 +6,7 @@ else:
     print("You are not eligible to vote.")
  """
 
-a=True
+""" a=True
 
-print(not a)
+print(not a) """
+
