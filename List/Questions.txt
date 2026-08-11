@@ -1,22 +1,22 @@
- Write a program to check whether a given number exists in a list.
+1.Write a program to check whether a given number exists in a list.
 
 
-Check whether the first element of a list is greater than the last element.
+2.Check whether the first element of a list is greater than the last element.
 
 
-Write a program to check if a list contains more than 5 elements.
+3.Write a program to check if a list contains more than 5 elements.
 
 
-Check whether the number 10 is present in the list.
+4.Check whether the number 10 is present in the list.
 
 
-Write a program to check if the sum of the first two elements is greater than the last element.
+5.Write a program to check if the sum of the first two elements is greater than the last element.
 
 
-Check whether all elements in a list are positive numbers.
+6.Check whether all elements in a list are positive numbers.
 
 
-Write a program to check whether a list is empty or not.
+7.Write a program to check whether a list is empty or not.
 
 
 8.Write a program to check whether a given number exists in a tuple.

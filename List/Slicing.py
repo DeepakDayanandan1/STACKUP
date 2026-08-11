@@ -1,3 +1,4 @@
+""" 
 # 1. int 'pyt' from 'python'. Output: pyt
 # 2. Print 'thon' from 'python'. Output: thon
 # 3. Print 'comp' from 'computer'. Output: comp
@@ -7,7 +8,8 @@
 # 7. Print all characters except the first one from 'keyboard'. Output: eyboard
 # 8. Print all characters except the last one from 'keyboard'. Output: keyboar
 # 9. Print the last 4 characters of 'programming'. Output: ming
-# 10. Print 'gram' from 'programming'. Output: gram
+# 10. Print 'gram' from 'programming'. Output: gram 
+"""
 
 a="python"
 print(a[0:3])
@@ -29,6 +31,7 @@ e="programming"
 print(e[7:])
 print(e[3:7])
 
+"""
 # 11. Print every second character of 'python'. Output: pto
 # 12. Print every second character starting from index 1 of 'computer'. Output: optr
 # 13. Reverse 'python'. Output: nohtyp
@@ -38,7 +41,8 @@ print(e[3:7])
 # 17. Print the middle four characters of 'computer'. Output: mput
 # 18. Print 'board' from 'keyboard' using negative indices. Output: board
 # 19. Print every second character in reverse from 'programming'. Output: gimrop
-# 20. Check whether 'madam' is a palindrome using slicing. Output: Tru
+# 20. Check whether 'madam' is a palindrome using slicing. Output: True 
+ """
 
 
 print(a[::2])
