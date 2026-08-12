@@ -26,7 +26,8 @@
 
 
 
-""" a = int(input("Enter first number: "))
+""" 
+a = int(input("Enter first number: "))
 b = int(input("Enter the second number: "))
 c = int(input("Enter the third number: "))
 if a > b and a > c: 
@@ -47,7 +48,8 @@ else:
 """
 
 
-""" a = int(input("Enter the units: "))
+""" 
+a = int(input("Enter the units: "))
 if a <= 100:
     price=a*2
     print("Price is Rs.",price)
@@ -69,7 +71,7 @@ if exp > 5 and salary > 50000:
 else:
     bonus = salary * 0.05
     print("Bonus = ₹",bonus)
- """
+"""
 
 
 """ 
@@ -80,4 +82,4 @@ elif a == b or b == c or a == c:
     print("The triangle is Isosceles.")
 else:
     print("The triangle is Scalene.")
- """        
+"""        
