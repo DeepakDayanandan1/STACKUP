@@ -80,4 +80,4 @@ elif a == b or b == c or a == c:
     print("The triangle is Isosceles.")
 else:
     print("The triangle is Scalene.")
- """        
+ """ 
