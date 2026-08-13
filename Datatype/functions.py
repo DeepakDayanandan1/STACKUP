@@ -63,3 +63,30 @@ a.sort(reverse=True)    #sort descending order
 print(a) 
 """
 
+"""
+#set
+a = {70,65,50,35,50,40}
+b=a.copy()
+print(b)
+a.add(100)
+a.remove(65)
+a.update([2,3])
+a.discard(40)       #remove
+print(a) 
+"""
+
+""" 
+a = {70,65,50,40}
+b = {35,20,45,40}
+c = a.union(b)          #union
+c = a.intersection(b)   #intersection
+print(c) 
+"""
+
+
+a = {10,20,30,40}
+b = {15,30,45,60}
+c = a.difference(b)             #difference
+c = a.symmetric_difference(b)   #symmetric_difference
+print(c)
+
