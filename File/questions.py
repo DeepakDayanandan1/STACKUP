@@ -70,13 +70,19 @@ print("Number of vowels: ",count)
 n = int(input("Enter the limit: "))
 f1 = 0
 f2 = 1
-print(f1)
-print(f2)
-for i in range(2,n):
-    f3 = f1+f2
-    f1 = f2
-    f2 = f3
-    print(f3)  
+if n == 1:
+    print(f1)
+if n == 2:
+    print(f1)
+    print(f2)
+else:
+    print(f1)
+    print(f2)
+    for i in range(2,n):
+        f3 = f1+f2
+        f1 = f2
+        f2 = f3
+        print(f3)  
 """
 
 #	Write a function to find the sum of elements in a list.
