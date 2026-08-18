@@ -1,6 +1,4 @@
-a.add(100)
-a.remove(65)
-a.update([2,3])
-a.discard(40)       #remove
-
-print(a)
+def add(a,b):
+    return a+b
+result = add(10,20)
+print(result)

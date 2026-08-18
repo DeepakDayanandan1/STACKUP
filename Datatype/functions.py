@@ -83,10 +83,11 @@ c = a.intersection(b)   #intersection
 print(c) 
 """
 
-
+""" 
 a = {10,20,30,40}
 b = {15,30,45,60}
 c = a.difference(b)             #difference
 c = a.symmetric_difference(b)   #symmetric_difference
-print(c)
+print(c) 
+"""
 
