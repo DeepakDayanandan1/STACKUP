@@ -14,7 +14,6 @@ Read a file line by line and print each line.
 Display only the lines containing a particular word. 
 """
 
-
 # Create a file and write text into it.
 # Create sample.txt
 # Write 5 lines into the file.
@@ -59,4 +58,35 @@ with open("sample.txt","r") as source_file:
     with open("destination.txt","w") as destination_file:
         for line in source_file:
             destination_file.write(line)
+file.close()
+
+# Append data to an existing file.
+
+file = open("sample.txt","a")
+file.write("\nSix\nSeven")
+file.close()
+
+# Check whether a file exists or not.
+
+import os
+
+if os.path.exists("sample.txt"):
+    print("File exists.")
+else:
+    print("File does not exist.")
+
+# Read a file line by line and print each line.
+
+file = open("sample.txt","r")
+for line in file:
+    print(line.strip())         #strip() - Each line usually contains a \n (newline). strip() removes it.
+file.close()
+
+# Display only the lines containing a particular word. 
+
+word = input("Enter the word: ")
+file = open("sample.txt","r")
+for line in file:
+    if word in line:
+        print(line.strip())
 file.close()
