@@ -1,2 +1,4 @@
 Welcome to Stackup!
-Hello.
+Welcome to Stackup!
+Welcome to Stackup!
+Hello World.
