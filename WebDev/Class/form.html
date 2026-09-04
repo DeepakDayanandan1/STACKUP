@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Booking</title>
+    <style>
+        label {
+            display:inline-flex;      
+            margin-right: 6px;
+        } 
+    </style>
+</head>
+<body>
+    <div >
+        <h1 style="text-align: center;">Ticket Booking Form</h1>
+        <div style="text-align: left; padding-left: 150px; padding-top: 20px;">
+            <form action="">
+                <label for="name">Name</label>
+                <input type="text" name="name" > <br><br>
+                <label for="age">Age</label>
+                <input type="number" name="age" > <br><br>
+                <label for="address">Address</label>
+                <textarea type="text" name="address"></textarea> <br><br>
+                <label for="seatno">Select Seat</label>
+                <select name="seatno">
+                    <option>A1</option>
+                    <option>A2</option>
+                    <option>B1</option>
+                    <option>B2</option>
+                </select><br><br>
+                <label for="gender">Gender</label>
+                <input type="radio" name="gender">Male
+                <input type="radio" name="gender">Female <br><br>
+                <label for="file">Upload File</label>
+                <input type="file" name="file"> <br><br><br>
+                <input type="submit">
+                <input type="reset">
+            </form>
+        </div>
+    </div>
+    <div style="padding-top: 40px;">
+        <center>
+            <h2>Ticket Booking In Table</h2>
+            <form action="">
+                <table>
+                    <tr>
+                        <td><label for="name">Name</label></td>
+                        <td><input type="text" name="name" > <br></td>
+                    </tr>
+                    <tr>
+                        <td><label for="age">Age</label></td>
+                        <td><input type="number" name="age" > <br></td>
+                    </tr>
+                    <tr>
+                        <td><label for="address">Address</label> </td>
+                        <td><textarea type="text" name="address"></textarea> </td>
+                    </tr>
+                    <tr>
+                        <td><label for="gender">Gender</label></td>
+                        <td><input type="radio" name="gender">Male 
+                        <input type="radio" name="gender">Female </td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit"></td>
+                        <td><input type="reset"></td>
+                    </tr>
+        </table>
+            </form>
+        </center>
+    </div>
+</body>
+</html>
