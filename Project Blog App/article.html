@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Architecture of Silence: Designing Spaces That Breathe - Inkly</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Article Page Scoped Styles */
+        body {
+            background-color: #FFFFFF;
+        }
+
+        .article-page-container {
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 36px 20px 60px;
+            font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+            color: #111827;
+        }
+
+        /* Back to feed */
+        .back-feed-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13.5px;
+            font-weight: 500;
+            color: #6B7280;
+            text-decoration: none;
+            margin-bottom: 24px;
+            transition: color 0.15s ease;
+        }
+
+        .back-feed-link:hover {
+            color: #111827;
+        }
+
+        .back-feed-link svg {
+            width: 15px;
+            height: 15px;
+            stroke: currentColor;
+            stroke-width: 2.2;
+            fill: none;
+        }
+
+        /* Category badge & read time */
+        .meta-pill-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .category-pill {
+            background-color: #EEF2FF;
+            color: #4F46E5;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            letter-spacing: 0.01em;
+        }
+
+        .reading-time {
+            color: #6B7280;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        /* Article Headline */
+        .article-headline {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 38px;
+            font-weight: 700;
+            line-height: 1.25;
+            color: #111827;
+            margin-bottom: 22px;
+            letter-spacing: -0.02em;
+        }
+
+        /* Author card */
+        .author-card-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 28px;
+        }
+
+        .author-info-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .author-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .author-text-details {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .author-name-text {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .author-meta-sub {
+            font-size: 12.5px;
+            color: #6B7280;
+        }
+
+        .follow-pill-btn {
+            border: 1px solid #6366F1;
+            color: #4F46E5;
+            background: transparent;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 6px 20px;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .follow-pill-btn:hover {
+            background-color: #EEF2FF;
+        }
+
+        /* Hero Image */
+        .article-hero-wrap {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 36px;
+            background-color: #F3F4F6;
+        }
+
+        .article-hero-wrap img {
+            width: 100%;
+            height: auto;
+            max-height: 440px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Prose Content */
+        .article-body-content {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #374151;
+            margin-bottom: 32px;
+        }
+
+        .article-body-content h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 23px;
+            font-weight: 700;
+            color: #111827;
+            margin: 34px 0 14px;
+            letter-spacing: -0.01em;
+        }
+
+        .article-body-content p {
+            margin-bottom: 20px;
+        }
+
+        /* Actions strip */
+        .actions-strip {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 16px 0;
+            border-top: 1px solid #E5E7EB;
+            border-bottom: 1px solid #E5E7EB;
+            margin-bottom: 36px;
+        }
+
+        .action-tool-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: transparent;
+            border: none;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: #6B7280;
+            cursor: pointer;
+            padding: 6px 10px;
+            border-radius: 6px;
+            transition: all 0.15s ease;
+        }
+
+        .action-tool-btn:hover {
+            background-color: #F3F4F6;
+            color: #111827;
+        }
+
+        .action-tool-btn svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        /* Comments Section */
+        .comments-section {
+            margin-bottom: 50px;
+        }
+
+        .comments-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 21px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 20px;
+        }
+
+        .comment-input-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #F3F4F6;
+            border-radius: 12px;
+            padding: 8px 14px;
+            margin-bottom: 20px;
+        }
+
+        .comment-user-avatar {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .comment-input-field {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-size: 13.5px;
+            color: #111827;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .comment-input-field::placeholder {
+            color: #9CA3AF;
+        }
+
+        .comment-card-item {
+            display: flex;
+            gap: 14px;
+            padding: 16px 18px;
+            border-radius: 14px;
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            margin-bottom: 12px;
+        }
+
+        .comment-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .comment-body {
+            flex: 1;
+        }
+
+        .comment-header-row {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .comment-author-name {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .comment-timestamp {
+            font-size: 12px;
+            color: #9CA3AF;
+        }
+
+        .comment-text-paragraph {
+            font-size: 13.5px;
+            line-height: 1.55;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+
+        .comment-heart-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12px;
+            color: #6B7280;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+
+        .comment-heart-btn svg {
+            width: 13px;
+            height: 13px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        /* More like this section */
+        .more-articles-wrap {
+            margin-top: 44px;
+            border-top: 1px solid #E5E7EB;
+            padding-top: 32px;
+        }
+
+        .more-heading-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 21px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 22px;
+        }
+
+        .more-grid-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .more-card-item {
+            display: flex;
+            flex-direction: column;
+            background: #FFFFFF;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid #E5E7EB;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .more-card-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .more-card-thumb {
+            position: relative;
+            width: 100%;
+            height: 170px;
+            overflow: hidden;
+            background: #F3F4F6;
+        }
+
+        .more-card-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .floating-pill {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(255, 255, 255, 0.94);
+            padding: 3px 10px;
+            border-radius: 9999px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #111827;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .more-card-text-body {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .more-card-post-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.35;
+            color: #111827;
+            margin-bottom: 6px;
+        }
+
+        .more-card-snippet {
+            font-size: 12.5px;
+            line-height: 1.5;
+            color: #6B7280;
+            margin-bottom: 14px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .more-card-bottom-bar {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 11.5px;
+            color: #6B7280;
+            padding-top: 10px;
+            border-top: 1px solid #F3F4F6;
+        }
+
+        .more-card-author-left {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-weight: 500;
+        }
+
+        .more-card-author-left img {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .more-card-stats-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .stat-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: #6B7280;
+            font-size: 11.5px;
+        }
+
+        .stat-btn svg {
+            width: 13px;
+            height: 13px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 720px) {
+            .article-headline {
+                font-size: 28px;
+            }
+
+            .more-grid-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .article-page-container {
+                padding: 24px 16px 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Existing Header (Identical to index.html) -->
+    <div class="navbar">
+        <div class="left">
+            <a href="index.html" class="lf" style="text-decoration: none; color: inherit;">
+                <div class="logo" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2C11.5 2 11 2.2 10.6 2.6L4.6 8.6C4.2 9 4 9.5 4 10V18C4 19.1 4.9 20 6 20H18C19.1 20 20 19.1 20 18V10C20 9.5 19.8 9 19.4 8.6L13.4 2.6C13 2.2 12.5 2 12 2ZM12 5.8L16.2 10H7.8L12 5.8ZM12 11.5C13.1 11.5 14 12.4 14 13.5C14 14.3 13.5 15 12.8 15.3V18H11.2V15.3C10.5 15 10 14.3 10 13.5C10 12.4 10.9 11.5 12 11.5Z"/>
+                    </svg>
+                </div>
+                <div class="logo-name">
+                    Inkly
+                </div>
+            </a>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <div class="span">
+                <a href="index.html">Home</a>
+                <a href="#">Explore</a>
+                <a href="#">Categories</a>
+                <a href="#">About</a>
+            </div>
+        </div>    
+        <div class="right">
+            <div class="search-bar">
+                <button class="search-icon" aria-label="Search">⌕</button>
+                <input type="text" placeholder="Search stories,topics...">
+            </div>
+            <div class="write">
+                <span>+</span>
+                <span>Write</span>
+            </div>
+            <a href="signin.html" class="profile" title="Sign In / Profile">
+                <img src="public/imgg.png" alt="Profile">
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Article Page Content -->
+    <main class="article-page-container">
+        
+        <!-- Back to feed -->
+        <div>
+            <a href="index.html" class="back-feed-link">
+                <svg viewBox="0 0 24 24">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                <span>Back to feed</span>
+            </a>
+        </div>
+
+        <!-- Meta Tag Row -->
+        <div class="meta-pill-row">
+            <span class="category-pill">Design</span>
+            <span class="reading-time">6 min read</span>
+        </div>
+
+        <!-- Title -->
+        <h1 class="article-headline">The Architecture of Silence: Designing Spaces That Breathe</h1>
+
+        <!-- Author Card -->
+        <div class="author-card-row">
+            <div class="author-info-group">
+                <img src="public/images (2).jpg" alt="Nora Thielemann" class="author-avatar" width="44" height="44">
+                <div class="author-text-details">
+                    <span class="author-name-text">Nora Thielemann</span>
+                    <span class="author-meta-sub">Jul 28, 2026 · 6 min read</span>
+                </div>
+            </div>
+            <button class="follow-pill-btn" type="button">Follow</button>
+        </div>
+
+        <!-- Hero Featured Image -->
+        <div class="article-hero-wrap">
+            <img src="public/landing.png" alt="Minimalist living room with natural light and expansive outdoor view">
+        </div>
+
+        <!-- Prose Content -->
+        <article class="article-body-content">
+            <h2>The space between objects</h2>
+            <p>In Japanese aesthetics, ma (間) refers not to space itself but to the interval — the pregnant pause between sound and silence, between wall and window. For centuries it shaped how temples breathed, how gardens arranged stone.</p>
+
+            <h2>From shoji screens to UI grids</h2>
+            <p>When Dieter Rams formulated his ten principles, "as little design as possible" was the last and arguably most important. Not zero design — as little as the problem demands. There is craftsmanship in restraint that is harder to execute than abundance.</p>
+
+            <p>The challenge for contemporary designers is resisting the accumulation of features, colors, and animations that signal effort rather than produce clarity. A well-placed margin is invisible; a cluttered margin announces itself as a failure.</p>
+
+            <h2>Negative space as intention</h2>
+            <p>When Tadao Ando builds a church from concrete and light, the material recedes and the interval becomes the subject. This is not minimalism as aesthetic preference — it is a rigorous philosophy about what deserves attention.</p>
+        </article>
+
+        <!-- Actions Strip -->
+        <div class="actions-strip">
+            <button class="action-tool-btn" type="button">
+                <svg viewBox="0 0 24 24">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+                <span>248</span>
+            </button>
+
+            <button class="action-tool-btn" type="button">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="18" cy="5" r="3"></circle>
+                    <circle cx="6" cy="12" r="3"></circle>
+                    <circle cx="18" cy="19" r="3"></circle>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                </svg>
+                <span>Share</span>
+            </button>
+        </div>
+
+        <!-- Comments Section -->
+        <section class="comments-section">
+            <h3 class="comments-title">Comments (34)</h3>
+
+            <!-- Comment Input -->
+            <div class="comment-input-bar">
+                <img src="public/imgg.png" alt="User avatar" class="comment-user-avatar" width="34" height="34">
+                <input type="text" class="comment-input-field" placeholder="Share your thoughts...">
+            </div>
+
+            <!-- Comment 1 -->
+            <div class="comment-card-item">
+                <img src="public/imgg.png" alt="Marcus Yuen" class="comment-avatar" width="38" height="38">
+                <div class="comment-body">
+                    <div class="comment-header-row">
+                        <span class="comment-author-name">Marcus Yuen</span>
+                        <span class="comment-timestamp">2h ago</span>
+                    </div>
+                    <p class="comment-text-paragraph">This resonated deeply. The Debussy quote is perfect here — the parallel to design is so precise.</p>
+                    <div class="comment-heart-btn">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                        <span>12</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comment 2 -->
+            <div class="comment-card-item">
+                <img src="public/images (2).jpg" alt="Elif Şahin" class="comment-avatar" width="38" height="38">
+                <div class="comment-body">
+                    <div class="comment-header-row">
+                        <span class="comment-author-name">Elif Şahin</span>
+                        <span class="comment-timestamp">5h ago</span>
+                    </div>
+                    <p class="comment-text-paragraph">I've been trying to articulate this for years. You nailed it with the Tadao Ando example.</p>
+                    <div class="comment-heart-btn">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                        <span>8</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comment 3 -->
+            <div class="comment-card-item">
+                <img src="public/imgg.png" alt="Raj Krishnamurthy" class="comment-avatar" width="38" height="38">
+                <div class="comment-body">
+                    <div class="comment-header-row">
+                        <span class="comment-author-name">Raj Krishnamurthy</span>
+                        <span class="comment-timestamp">1d ago</span>
+                    </div>
+                    <p class="comment-text-paragraph">The 'ma' concept applies directly to code architecture too. A function with breathing room is more maintainable.</p>
+                    <div class="comment-heart-btn">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                        <span>24</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- "More like this" Section -->
+        <section class="more-articles-wrap">
+            <h3 class="more-heading-title">More like this</h3>
+
+            <div class="more-grid-cards">
+                <!-- Card 1 -->
+                <a href="article.html" class="more-card-item">
+                    <div class="more-card-thumb">
+                        <img src="public/landing.png" alt="Fermentation jars">
+                        <span class="floating-pill">Food</span>
+                    </div>
+                    <div class="more-card-text-body">
+                        <h4 class="more-card-post-title">Fermentation as Philosophy: What Kimchi Teaches Us About Patience</h4>
+                        <p class="more-card-snippet">A deep dive into the ancient practice of fermentation and its unexpected parallels wit...</p>
+                        <div class="more-card-bottom-bar">
+                            <div class="more-card-author-left">
+                                <img src="public/imgg.png" alt="Marcus" width="20" height="20">
+                                <span>Marcus · 8 min read</span>
+                            </div>
+                            <div class="more-card-stats-right">
+                                <span class="stat-btn">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                    </svg>
+                                    182
+                                </span>
+                                <span class="stat-btn">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 2 -->
+                <a href="article.html" class="more-card-item">
+                    <div class="more-card-thumb">
+                        <img src="public/id1.png" alt="Tbilisi cityscape">
+                        <span class="floating-pill">Travel</span>
+                    </div>
+                    <div class="more-card-text-body">
+                        <h4 class="more-card-post-title">Solo in Tbilisi: A City Between Centuries</h4>
+                        <p class="more-card-snippet">Georgia's capital defies easy categorization — medieval towers beside Soviet brutalism besid...</p>
+                        <div class="more-card-bottom-bar">
+                            <div class="more-card-author-left">
+                                <img src="public/images (2).jpg" alt="Elif" width="20" height="20">
+                                <span>Elif · 11 min read</span>
+                            </div>
+                            <div class="more-card-stats-right">
+                                <span class="stat-btn">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                    </svg>
+                                    431
+                                </span>
+                                <span class="stat-btn">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Existing Footer (Identical to index.html) -->
+    <footer>
+        <div class="footer-bottom">
+            © 2026 Inkly. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
