@@ -1,0 +1,28 @@
+<!-- Write a program to find grade of a student:
+Marks ≥ 90 → Grade A
+Marks ≥ 75 → Grade B
+Marks ≥ 50 → Grade C
+Else → Fail -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Calculator</title>
+</head>
+<body>
+    <script>
+        let marks = parseInt(prompt("Enter the marks:"));
+        if (marks >= 90){
+            console.log("Grade A");
+        }else if (marks >= 75){
+            console.log("Grade B");
+        }else if (marks >= 50){
+            console.log("Grade C");
+        }else{
+            console.log("Fail");
+        }
+    </script>
+</body>
+</html>

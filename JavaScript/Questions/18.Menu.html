@@ -1,0 +1,31 @@
+<!-- Write a program using switch to display menu-driven program:
+1 → Tea
+2 → Coffee
+3 → Juice -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+</head>
+<body>
+    <script>
+        let choice = parseInt(prompt("Enter your choice (1-3):"));
+        switch(choice) {
+            case 1:
+                console.log("You selected Tea.");
+                break;
+            case 2:
+                console.log("You selected Coffee.");
+                break;
+            case 3:
+                console.log("You selected Juice.");
+                break;
+            default:
+                console.log("Invalid choice.");
+        }
+    </script>
+</body>
+</html>
