@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let num = prompt("Enter a number");
+        let reverse = 0;
+        for(i=num; i!=0; i=i/10){
+            let remainder = i % 10;
+            reverse = reverse * 10 + remainder;
+        }
+        console.log(`Reverse of ${num} is ${reverse}`);
+
+        
+        /* let num = prompt("Enter a number");
+        let reverse = 0;    
+        while(num != 0){    
+            let remainder = num % 10;    
+            reverse = reverse * 10 + remainder;    
+            num = num / 10;    
+        }
+        console.log(`Reverse of ${num} is ${reverse}`); */
+
+
+
+
+
+    </script>
+</body>
+</html>
