@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* Part 5: Arrays
+            1. Create an array named subjects containing three subjects.
+            2. Create another array named marks containing three marks.
+            3. Display all the subjects using a loop.
+            4. Display the total marks.
+            5. Find and display the highest mark.
+            6. Add one more subject to the array using push(). */
+
+        let subjects = ["Maths", "Science", "English"];
+        let marks = [85, 90, 78];
+
+        for (let i = 0; i < subjects.length; i++) {
+            console.log(subjects[i]);
+        }
+
+        let total = 0;
+        for (let j = 0; j < marks.length; j++) {
+            total += marks[j];
+        }
+        console.log("Total marks:", total);
+
+        let highest = marks[0];
+        for (let k = 1; k < marks.length; k++) {
+            if (marks[k] > highest) {
+                highest = marks[k];
+            }
+        }
+        console.log("Highest mark:", highest);
+
+        subjects.push("History");
+        console.log("Subjects:", subjects);
+        marks.push(88);
+        console.log("Marks:", marks);
+    </script>
+</body>
+</html>

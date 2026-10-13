@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* Create a student object containing:
+            ● name
+            ● age
+            ● course
+            ● subjects
+            ● marks
+        Then:
+            1. Display the student's name and course.
+            2. Display all subject marks.
+            3. Update the student's age.
+            4. Add a new property called city.
+            5. Display the complete student information. */
+
+        let student = {
+            name: "Jude",
+            age: 20,
+            course: "Computer Science",
+            subjects: ["Maths", "Science", "English"],
+            marks: [80, 95, 78]
+        };
+
+        console.log("Name:", student.name);
+        console.log("Course:", student.course);
+
+        for (let i = 0; i < student.subjects.length; i++) {
+            console.log(student.subjects[i] ,":", student.marks[i]);
+        }
+
+        student.age = 22;
+        console.log("Updated age:", student.age);
+
+        student.city = "New York";
+        console.log("City:", student.city);
+        
+        console.log("Complete student information:",student);
+    </script>
+</body>
+</html>

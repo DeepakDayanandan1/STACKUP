@@ -14,5 +14,3 @@ let a = prompt.question("Enter a number: ");
 res = EvenOdd(a);
 console.log(res);
 
-
-

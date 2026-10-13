@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* Part 6: Functions
+            Create the following functions:
+            1. calculateTotal(marks) — accepts an array of marks and returns the total.
+            2. calculateAverage(marks) — accepts an array of marks and returns the average.
+            3. checkResult(average) — accepts the average and returns "Pass" or "Fail".
+            4. findGrade(average) — accepts the average and returns the appropriate grade.
+            Call each function and display its result. */
+
+        function calculateTotal(marks) {
+            let total = 0;
+            for (let i = 0; i < marks.length; i++) {
+                total += marks[i];
+            }
+            return total;
+        }
+
+        function calculateAverage(marks) {
+            let total = calculateTotal(marks);
+            return total / marks.length;
+        }
+
+        function checkResult(average) {
+            if (average >= 50) {
+                return "Pass";
+            } else {
+                return "Fail";
+            }
+        }
+
+        function findGrade(average) {
+            if (average >= 80) {
+                return "A";
+            } else if (average >= 60) {
+                return "B";
+            } else {
+                return "C";
+            }
+        }
+
+        let marks = [85, 90, 78];
+        console.log("Total marks:", calculateTotal(marks));
+        console.log("Average marks:", calculateAverage(marks));
+        console.log("Result:", checkResult(calculateAverage(marks)));
+        console.log("Grade:", findGrade(calculateAverage(marks)));
+    </script>
+</body>
+</html>

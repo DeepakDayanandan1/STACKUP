@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* Part 3: Conditional Statements
+            Use the student's average mark to determine the result.
+                ● Average greater than or equal to 90: Grade A
+                ● Average greater than or equal to 75: Grade B
+                ● Average greater than or equal to 60: Grade C
+                ● Average greater than or equal to 40: Grade D
+                ● Average below 40: Grade F
+            Also, display:
+                ● "Pass" if the average is 40 or above.
+                ● "Fail" if the average is below 40. */
+
+        let m1 = Number(prompt("Enter the mark of subject 1:"));
+        let m2 = Number(prompt("Enter the mark of subject 2:"));
+        let m3 = Number(prompt("Enter the mark of subject 3:"));
+
+        let avg = (m1+m2+m3)/3;
+
+        if (avg>=40){
+            if (avg>=90){
+                console.log("Grade A");
+            }else if(avg>=75){
+                console.log("Grade B");
+            }else if(avg>=60){
+                console.log("Grade C");
+            }else{
+                console.log("Grade D");
+            }
+            console.log("PASS");
+        }else{
+            console.log("Grade F");
+            console.log("FAIL");
+        }
+    </script>
+</body>
+</html>
