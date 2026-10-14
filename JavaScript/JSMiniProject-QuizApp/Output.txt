@@ -1,0 +1,43 @@
+===== JAVASCRIPT QUIZ =====
+QuizApp.html:50 Which keyword is used to declare a variable in JavaScript?
+QuizApp.html:51 1. int
+2. let
+3. string
+4. define
+QuizApp.html:55 Enter your answer (1-4): 2
+QuizApp.html:59 Correct Answer!
+QuizApp.html:50 Which function is used to display output in the browser console?
+QuizApp.html:51 1. print()
+2. display()
+3. console.log()
+4. show()
+QuizApp.html:55 Enter your answer (1-4): 3
+QuizApp.html:59 Correct Answer!
+QuizApp.html:50 Which data type is used to store text in JavaScript?
+QuizApp.html:51 1. Number
+2. String
+3. Boolean
+4. Undefined
+QuizApp.html:55 Enter your answer (1-4): 2
+QuizApp.html:59 Correct Answer!
+QuizApp.html:50 Which symbol is used for a single-line comment in JavaScript?
+QuizApp.html:51 1. <!--
+2. ##
+3. //
+4. **
+QuizApp.html:55 Enter your answer (1-4): 3
+QuizApp.html:59 Correct Answer!
+QuizApp.html:50 Which keyword is used to declare a constant in JavaScript?
+QuizApp.html:51 1. var
+2. let
+3. const
+4. constant
+QuizApp.html:55 Enter your answer (1-4): 4
+QuizApp.html:64 Incorrect Answer!
+QuizApp.html:65 Correct Answer: 3. const
+QuizApp.html:71 ===== QUIZ RESULT =====
+QuizApp.html:72 Total Questions: 5
+QuizApp.html:73 Correct Answers: 4
+QuizApp.html:74 Incorrect Answers: 1
+QuizApp.html:75 Final Score: 4 / 5
+QuizApp.html:76 Percentage: 80 %
