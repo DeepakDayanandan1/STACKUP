@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+</head>
+<body>
+    <!-- Objectives:
+        ● Select HTML elements using DOM methods.
+        ● Modify text content using JavaScript.
+        ● Change CSS styles using the DOM.
+        ● Modify HTML attributes using setAttribute().
+        ● Understand the difference between getElementById() and querySelector().
+    Instructions:
+        1. Create an HTML page with a heading named Product Details.
+        2. Display the following product information:
+            ○ Product Name: Wireless Mouse
+            ○ Price: ₹800
+            ○ Category: Computer Accessories
+            ○ Availability: Out of Stock
+        3. Add an image representing the product.
+        4. Using JavaScript DOM manipulation, perform the following operations:
+            ○ Change the heading to Updated Product Details.
+            ○ Change the product name to Wireless Keyboard.
+            ○ Change the price to ₹1,200.
+            ○ Change the category to Computer Peripherals.
+            ○ Change the availability message to In Stock.
+            ○ Change the availability text color to green.
+            ○ Change the price font size to 28px.
+            ○ Change the background color of the product section to light blue.
+            ○ Change the image's alt attribute to Wireless Keyboard Product Image.
+            ○ Add a border around the product section.
+    Conditions:
+        ● Use HTML and JavaScript.
+        ● Use getElementById() and querySelector() at least once each.
+        ● Use textContent to update text.
+        ● Use the DOM style property to modify CSS.
+        ● Use setAttribute() to update an HTML attribute.
+        ● Do not use addEventListener() or button click events. -->
+
+    <h1 id="heading">Product Details</h1>
+    <div id="product-details">  
+        <p class="product-name">Product Name: Wireless Mouse</p>
+        <p id="product-price">Price: ₹800</p>
+        <p id="product-category">Category: Computer Accessories</p>
+        <p id="product-availability">Availability: Out of Stock</p>
+        <img src="/public/Img.ng" width="150" height="150" alt="Product Image" id="product-image">
+    </div>
+
+    <script>
+        document.getElementById("heading").innerHTML = "Updated Product Details";
+        document.querySelector(".product-name").textContent = "Product Name: Wireless Keyboard";
+        document.getElementById("product-price").innerHTML = "Price: ₹1200";
+        document.querySelector("#product-category").textContent = "Category: Computer Peripherals";
+        document.getElementById("product-availability").innerHTML = "Availability: In Stock";
+        document.getElementById("product-availability").style.color = "green";
+        document.getElementById("product-price").style.fontSize = "28px";
+        document.getElementById("product-details").style.backgroundColor = "lightblue";
+        document.getElementById("product-image").alt = "Wireless Keyboard Product Image";
+        document.getElementById("product-details").style.border = "2px solid black";
+    </script>
+
+</body>
+</html>

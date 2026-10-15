@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+</head>
+<body>
+
+    <!-- Objectives:
+        ● Understand the Document Object Model (DOM).
+        ● Select HTML elements using getElementById(), getElementsByClassName(),
+        and querySelector().
+        ● Change text using innerHTML and textContent.
+        ● Modify CSS styles using JavaScript.
+        ● Change HTML attributes using JavaScript.
+    Instructions:
+        1. Create an HTML page displaying a student profile.
+        2. Add a heading with the text Student Profile.
+        3. Display the following student details:
+        ○ Name: Anu
+        ○ Age: 20
+        ○ Course: Full Stack Development
+        ○ Status: Not Updated
+    4. Use JavaScript to perform the following operations:
+        ○ Change the main heading to Student Information.
+        ○ Change the student's name from Anu to Meera.
+        ○ Change the course to MERN Stack Development.
+        ○ Change the status to Profile Updated Successfully!
+        ○ Change the status text color to green.
+        ○ Change the background color of the profile section.
+        ○ Increase the font size of the student's name.
+        ○ Change the image's alt attribute to Student Profile Image. -->
+
+
+    <h1 id="heading">Student Profile</h1>
+    <div id="student-details">  
+        <p class="student-name">Name: Anu</p>
+        <p id="student-age">Age: 20</p>
+        <p id="student-course">Course: Full Stack Development</p>
+        <p id="student-status">Status: Not Updated</p>
+        <img src="/public/Img.p" width="150" height="150" alt="Profile Image" id="profile-image">
+    </div>
+
+    
+    <script>        
+        document.getElementById("heading").innerHTML = "Student Information";
+        document.querySelector(".student-name").innerHTML = "Name: Meera";
+        document.querySelector("#student-course").textContent = "Course: MERN Stack Development";
+        document.getElementById("student-status").innerHTML = "Status: Profile Updated Successfully!";
+        document.getElementById("student-status").style.color = "green";
+        document.getElementById("student-details").style.backgroundColor = "skyblue";
+        document.querySelector(".student-name").style.fontSize = "20px";
+        document.getElementById("profile-image").alt = "Student Profile Image";
+    </script>
+</body>
+</html>
