@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Listener</title>
+</head>
+<body>
+        <h2 id="heading">Move your mouse over me!</h2>
+        <h1 id="heading1">Welcome Students!</h1>
+        <button id="changeButton">Change Text</button><br><br>
+
+        <label>Enter your name:</label>
+        <input type="text" id="nameInput">
+        <p id="output"></p>
+            <script>
+                let heading = document.getElementById("heading");
+                heading.addEventListener("mouseover", function() {
+                    heading.style.color = "red";
+                });
+
+                let input = document.getElementById("nameInput");
+                let output = document.getElementById("output");
+                input.addEventListener("input", function() {
+                    output.textContent = "Hello, " + input.value;
+                });
+
+                let heading1 = document.getElementById("heading1");
+                let button = document.getElementById("changeButton");
+                button.addEventListener("click", function() {
+                    heading1.textContent = "Welcome to JavaScript!";
+                });
+            </script>
+    </body>
+</html> 
+
+
+
+
+<script>

@@ -1,0 +1,87 @@
+<!-- Practice Questions
+
+Task 1: Change Heading
+Create a webpage with a heading that says Good Morning and a button named Change Message. When
+the button is clicked, change the heading to Welcome to JavaScript.
+
+Task 2: Change Text Color
+Create a paragraph and a button named Change Color. When the button is clicked, change the
+paragraph's text color to blue.
+
+Task 3: Mouseover
+Create a heading that says Move Mouse Here. When the mouse pointer moves over the heading,
+change its color to green.
+
+Task 4: Live Greeting
+Create a text input and an empty paragraph. Whenever the user types a name, display Hello, name in
+the paragraph.
+
+Task 5: Double Click
+Create a paragraph that says Click Me Twice. When the user double-clicks the paragraph, change its
+text to Double-click event completed!. -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Listener</title>
+</head>
+<body>
+    <!-- Task1 -->
+    <!-- <h1 id="heading">Good Morning</h1>
+    <button id="changeMessage">Change Message</button>
+
+    <script>
+        let heading = document.getElementById("heading");
+        let button = document.getElementById("changeMessage");
+        button.addEventListener("click",function(){
+            heading.textContent = "Welcome to JavaScript.";
+        });
+    </script> -->
+
+    <!-- Task2 -->
+    <!-- <p id="paragraph">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem vitae sapiente consectetur quo officia fuga reiciendis eius nobis accusantium ducimus consequuntur consequatur delectus veniam dolor molestiae, corporis, ipsum minima esse totam et! Consequuntur, aspernatur rem, error laboriosam modi voluptas provident voluptate qui harum ab veniam veritatis officiis nisi alias consequatur?</p>
+    <button id="changeColor">Change Color</button>
+
+    <script>
+        let paragraph = document.getElementById("paragraph");
+        let button = document.getElementById("changeColor");
+        button.addEventListener("click", function() {
+            paragraph.style.color = "blue";
+        });
+    </script> -->
+
+    <!-- Task3 -->
+    <!-- <h2 id="heading">Move Mouse Here</h2>
+    <script>
+        let heading = document.getElementById("heading");
+        heading.addEventListener("mouseover", function() {
+            heading.style.color = "green";
+        });
+    </script> -->
+
+    <!-- Task4 -->
+    <!-- <label>Enter your name:</label>
+    <input type="text" id="nameInput">
+    <p id="output"></p>
+    <script>
+        let input = document.getElementById("nameInput");
+        let output = document.getElementById("output");
+        input.addEventListener("input", function() {
+            output.textContent = "Hello, " + input.value;
+        });
+    </script> -->
+
+    <!-- Task5 -->
+    <p id="paragraph" style="cursor: pointer;">Click Me Twice</p>
+    <script>
+        let paragraph = document.getElementById("paragraph");
+        paragraph.addEventListener("dblclick", function() {
+            paragraph.textContent = "Double-click event completed!";
+        });
+    </script>
+</body>
+</html>

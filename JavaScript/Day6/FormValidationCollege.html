@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Course Registration</title>
+</head>
+<body>
+    <!-- College Course Registration
+    Scenario: A college needs a webpage to collect student details for a course.
+    Requirements:
+        1. Create fields for student name, email, age, and course name.
+        2. Make sure the name and email are not empty.
+        3. Check that the email has a valid basic format.
+        4. Check that the student&#39;s age is at least 18.
+        5. Display an appropriate error message for invalid information.
+        6. Display a success message when all validations pass.
+        Concepts: HTML forms, DOM selection, .value, trim(), if...else, addEventListener(), and textContent. -->
+
+    <h1>College Course Registration</h1>
+    <form id="registrationForm">    
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age"><br><br>
+
+        <label for="course">Course Name:</label>
+        <input type="text" id="course" name="course"><br><br>
+
+        <button type="submit">Register</button>
+    </form>
+    <p id="message"></p>
+
+    <script>
+        let form = document.getElementById("registrationForm");
+        let message = document.getElementById("message");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let age = parseInt(document.getElementById("age").value);
+            let course = document.getElementById("course").value.trim();
+
+            if (name == "" || email == "") {
+                message.textContent = "Name and Email cannot be empty.";
+                message.style.color = "red";
+                return;
+            }
+
+            // Basic email format validation
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                message.textContent = "Please enter a valid email address.";
+                message.style.color = "red";
+                return;
+            }
+
+            if (isNaN(age) || age < 18) {
+                message.textContent = "You must be at least 18 years old to register.";
+                message.style.color = "red";
+                return;
+            }
+
+            message.textContent = "Registration successful!";
+            message.style.color = "green";
+        });
+    </script>
+
+</body>
+</html>
