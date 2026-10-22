@@ -1,0 +1,134 @@
+<!-- TASK: TO-DO LIST MINI-PROJECT
+
+Topic: JavaScript DOM Manipulation and Events
+Level: Beginner
+Technology: HTML, CSS, JavaScript
+
+Objective
+Create a To-Do List web application using HTML, CSS, and JavaScript. The application should
+allow users to add tasks, mark tasks as completed, delete tasks, and save tasks in the browser
+using localStorage.
+
+Requirements
+1. HTML Structure
+    ● Create a heading named My To-Do List.
+    ● Add a text input field to enter a task.
+    ● Add an Add Task button.
+    ● Create an unordered list (<ul>) to display tasks.
+2. DOM Selection and Manipulation
+    ● Use document.getElementById() or document.querySelector() to select
+    HTML elements.
+    ● Use JavaScript to create new <li> elements dynamically.
+    ● Display the entered task inside the list.
+    ● Add a Delete button for each task.
+3. Events and addEventListener()
+    ● Use addEventListener() to handle the Add Task button click.
+    ● When the user enters a task and clicks Add Task, display the task in the list.
+    ● Allow users to mark a task as completed by clicking on it.
+4. Forms and Validation
+    ● Place the task input field inside an HTML form.
+    ● Prevent the default form submission using event.preventDefault().
+    ● Display an alert if the user tries to add an empty task.
+    ● Remove unnecessary spaces from the beginning and end of the entered task using trim().
+5. Event Delegation
+    ● Attach only one event listener to the parent <ul> element to handle task interactions.
+    ● Use event.target to identify whether the user clicked a task or its Delete button.
+    ● Allow newly added tasks to work without attaching separate event listeners to each task.
+6. localStorage
+    ● Save the task list in the browser using localStorage.
+    ● Retrieve and display saved tasks when the page is refreshed or reopened.
+    ● Update localStorage whenever a task is added, completed, or deleted.
+
+Expected Output
+The application should look similar to this:
+My To-Do List
+Enter a task: [ Complete JavaScript notes ] [Add Task]
+    ● ☐ Complete JavaScript notes [Delete]
+    ● ☑ Practice DOM manipulation [Delete]
+    ● ☐ Study event delegation [Delete]
+Note: The checkboxes and buttons are only an illustration of the expected interface. Students
+may design their own layout.
+
+Expected Behaviour
+    1. When the user enters a task and clicks Add Task, the task should appear in the list.
+    2. If the input is empty, an alert should be displayed.
+    3. When the user clicks a task, it should be marked as completed or changed back to pending.
+    4. When the user clicks Delete, the selected task should be removed.
+    5. After refreshing the page, all previously saved tasks should still be displayed.
+    6. Changes to tasks must be saved automatically in localStorage.
+
+Restrictions
+    ● Do not use any JavaScript libraries or frameworks.
+    ● Do not use inline event handlers such as onclick.
+    ● Use addEventListener() for event handling.
+    ● Use event delegation for handling task interactions.
+    ● Use localStorage to persist the tasks.
+
+Bonus Challenges
+    ● Display the total number of tasks.
+    ● Display the number of completed and pending tasks.
+    ● Add a Clear All Tasks button.
+    ● Add separate filters for All, Completed, and Pending tasks.
+
+Submission: Submit the HTML, CSS, and JavaScript files along with a screenshot of the completed application. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+</head>
+<body>
+    <h1>My To-Do List</h1>
+    <form id="task-form">
+        <input type="text" id="task-input" placeholder="Enter a task">
+        <button type="submit" id="addTask">Add Task</button>
+    </form>
+    <ul id="task-list"></ul>
+
+<script>
+    
+    let taskForm = document.getElementById('task-form');
+    let taskInput = document.getElementById('task-input');
+    let taskList = document.getElementById('task-list');
+
+    taskForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        let taskText = taskInput.value.trim();
+
+        if (taskText === '') {
+            alert('Please enter a task.');
+            return;
+        }
+
+        let newTask = document.createElement("li");
+
+        let taskName = document.createElement("span");
+        taskName.textContent = taskText;
+        
+        let checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+               
+        let deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "Delete";
+        
+        deleteBtn.addEventListener('click', function(event) {
+            taskList.removeChild(newTask);
+        });
+        
+        newTask.appendChild(checkbox);
+        newTask.appendChild(taskName);
+        newTask.appendChild(deleteBtn);
+
+        taskList.appendChild(newTask);
+        taskInput.value = '';
+        
+    });
+
+</script>
+
+</body>
+</html>
