@@ -115,10 +115,6 @@ Submission: Submit the HTML, CSS, and JavaScript files along with a screenshot o
         let deleteBtn = document.createElement("button");
         deleteBtn.textContent = "Delete";
         
-        deleteBtn.addEventListener('click', function(event) {
-            taskList.removeChild(newTask);
-        });
-        
         newTask.appendChild(checkbox);
         newTask.appendChild(taskName);
         newTask.appendChild(deleteBtn);
@@ -126,6 +122,22 @@ Submission: Submit the HTML, CSS, and JavaScript files along with a screenshot o
         taskList.appendChild(newTask);
         taskInput.value = '';
         
+    });
+
+    taskList.addEventListener('click', function(event) {
+        if (event.target.tagName === 'BUTTON') {
+            let taskSelected = event.target.parentElement.querySelector('span').textContent;
+            console.log('Task', taskSelected,'Deleted.');
+            let deleteTask = event.target.parentElement;
+            deleteTask.remove();
+        }
+    });
+
+    taskList.addEventListener('change', function(event) {
+        if (event.target.type === 'checkbox') {
+        let taskSelected = event.target.parentElement.querySelector('span').textContent;
+        console.log('Task name:', taskSelected,'| Checkbox status =', event.target.checked);
+    }
     });
 
 </script>
