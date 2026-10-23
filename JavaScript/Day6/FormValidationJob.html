@@ -17,8 +17,57 @@
     Challenge: Use classList.add() to style error messages and success messages through CSS classes. -->
 
     <h1>Job Application Form</h1>
+    <form id="jobForm">    
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name"><br><br>
 
-    
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
 
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword"><br><br>
+
+        <button type="submit">Submit Application</button>
+    </form>
+
+    <p id="message"></p>
+
+    <script>
+        let form = document.getElementById("jobForm");
+        let message = document.getElementById("message");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault(); 
+
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirmPassword").value;
+
+            if (name === "" || email === "") {
+                message.textContent = "Full Name and Email are required.";
+                message.style.color = "red";
+                return;
+            }
+
+            if (password.length < 8) {
+                message.textContent = "Password must be at least 8 characters long.";
+                message.style.color = "red";
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                message.textContent = "Passwords do not match.";
+                message.style.color = "red";
+                return;
+            }
+
+            message.textContent = "Application submitted successfully!";
+            message.style.color = "green";
+        });
+    </script>
 </body>
 </html>
