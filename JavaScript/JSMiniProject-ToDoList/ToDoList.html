@@ -127,11 +127,6 @@
 
         #task-list li.completed {
             opacity: 0.7;
-            text-decoration: line-through;
-        }
-
-        #task-list li.completed .task-text {
-            text-decoration: line-through;
         }
 
         /* Task content */
@@ -197,30 +192,6 @@
             padding-top: 1rem;
             border-top: 1px solid var(--border);
         }
-
-        /* Responsive */
-        @media (max-width: 480px) {
-            body {
-                padding: 1rem;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            .form-group {
-                flex-direction: column;
-            }
-
-            .form-group input {
-                border-radius: 8px;
-                border-bottom: none;
-            }
-
-            .form-group button {
-                border-radius: 0 0 8px 8px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -235,13 +206,13 @@
         <ul id="task-list"></ul>
 
         <div class="stats" id="stats">
-            <span id="total-tasks">0</span> tasks
-            <span id="completed-tasks">0</span> completed
+            Tasks : <span id="total-tasks">0</span> | 
+            Pending : <span id="pending-tasks">0</span> | 
+            Completed : <span id="completed-tasks">0</span> 
         </div>
     </div>
 
     <script>
-        // Initialize from localStorage or set up empty state
         let tasks = JSON.parse(localStorage.getItem('todo-list')) || [];
 
         // DOM elements
@@ -249,6 +220,7 @@
         const taskInput = document.getElementById('task-input');
         const taskList = document.getElementById('task-list');
         const totalTasksEl = document.getElementById('total-tasks');
+        const pendingTasksEl = document.getElementById('pending-tasks');
         const completedTasksEl = document.getElementById('completed-tasks');
 
         // Render tasks to the DOM
@@ -294,20 +266,18 @@
             updateStats();
         }
 
-        // Save tasks to localStorage
         function saveTasks() {
             localStorage.setItem('todo-list', JSON.stringify(tasks));
         }
 
-        // Update stats display
         function updateStats() {
             const total = tasks.length;
             const completed = tasks.filter(t => t.completed).length;
             totalTasksEl.textContent = total;
             completedTasksEl.textContent = completed;
+            pendingTasksEl.textContent = total - completed;
         }
 
-        // Add a new task
         function addTask(text) {
             const trimmedText = text.trim();
             if (!trimmedText) {
@@ -325,41 +295,34 @@
             taskInput.value = '';
         }
 
-        // Toggle task completion
         function toggleTask(index) {
             tasks[index].completed = !tasks[index].completed;
             saveTasks();
             renderTasks();
         }
 
-        // Delete a task
+
         function deleteTask(index) {
             tasks.splice(index, 1);
             saveTasks();
             renderTasks();
         }
 
-        // Event delegation for task list - click for delete, change for checkbox
         taskList.addEventListener('click', function(event) {
             const li = event.target.closest('li');
 
-            if (!li) return;
-
-            // Delete button
             if (event.target.classList.contains('delete-btn')) {
                 const index = parseInt(event.target.dataset.index);
                 deleteTask(index);
                 return;
             }
 
-            // Task text click - toggle completion
             if (event.target.classList.contains('task-text')) {
                 const index = parseInt(li.dataset.index);
                 toggleTask(index);
             }
         });
 
-        // Handle checkbox changes
         taskList.addEventListener('change', function(event) {
             if (event.target.classList.contains('task-checkbox')) {
                 const li = event.target.closest('li');
@@ -370,13 +333,11 @@
             }
         });
 
-        // Form submit
         taskForm.addEventListener('submit', function(event) {
             event.preventDefault();
             addTask(taskInput.value);
         });
 
-        // Initialize
         renderTasks();
     </script>
 </body>
