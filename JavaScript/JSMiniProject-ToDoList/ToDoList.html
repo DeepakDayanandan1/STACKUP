@@ -5,29 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
     <style>
-        :root {
-            --primary: #3b82f6;
-            --primary-dark: #2563eb;
-            --secondary: #1e293b;
-            --accent: #f97316;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --error: #ef4444;
-            --text: #1e293b;
-            --text-light: #64748b;
-            --background: #f8fafc;
-            --card: #ffffff;
-            --border: #e2e8f0;
-        }
-
         * {
             box-sizing: border-box;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--background);
-            color: var(--text);
+            background: #f8fafc;
+            color: #1e293b;
             margin: 0;
             padding: 2rem;
             min-height: 100vh;
@@ -41,11 +26,19 @@
 
         h1 {
             text-align: center;
-            color: var(--secondary);
+            color: #1e293b;
             margin-bottom: 2rem;
             font-size: 2.5rem;
             font-weight: 300;
             letter-spacing: -0.02em;
+        }
+        .highlight {
+            font-weight: 600;
+            color: #3b82f6;
+        }
+
+        span {
+            color: #3b82f6;
         }
 
         /* Form styling */
@@ -58,7 +51,7 @@
         .form-group input {
             flex: 1;
             padding: 0.75rem 1rem;
-            border: 2px solid var(--border);
+            border: 2px solid #e2e8f0;
             border-radius: 8px 0 0 8px;
             font-size: 1rem;
             transition: border-color 0.2s, box-shadow 0.2s;
@@ -66,17 +59,17 @@
 
         .form-group input:focus {
             outline: none;
-            border-color: var(--primary);
+            border-color: #3b82f6;
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
         }
 
         .form-group input::placeholder {
-            color: var(--text-light);
+            color: #64748b;
         }
 
         .form-group button {
             padding: 0 1.5rem;
-            background: var(--primary);
+            background: #3b82f6;
             color: white;
             border: none;
             border-radius: 0 8px 8px 0;
@@ -87,7 +80,7 @@
         }
 
         .form-group button:hover {
-            background: var(--primary-dark);
+            background: #2563eb;
         }
 
         .form-group button:active {
@@ -95,7 +88,7 @@
         }
 
         .form-group button:focus-visible {
-            outline: 2px solid var(--primary-dark);
+            outline: 2px solid #2563eb;
             outline-offset: 2px;
         }
 
@@ -107,8 +100,8 @@
         }
 
         #task-list li {
-            background: var(--card);
-            border: 1px solid var(--border);
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
             border-radius: 12px;
             padding: 1rem 1.25rem;
             margin-bottom: 0.75rem;
@@ -121,7 +114,7 @@
         }
 
         #task-list li:hover {
-            border-color: var(--primary);
+            border-color: #3b82f6;
             transform: translateX(4px);
         }
 
@@ -135,26 +128,26 @@
             height: 18px;
             flex-shrink: 0;
             cursor: pointer;
-            accent-color: var(--primary);
+            accent-color: #3b82f6;
         }
 
         .task-text {
             flex: 1;
             font-size: 1rem;
-            color: var(--text);
+            color: #1e293b;
         }
 
         .task-text.completed {
             text-decoration: line-through;
-            color: var(--text-light);
+            color: #64748b;
         }
 
         /* Delete button */
         .delete-btn {
             padding: 0.4rem 0.8rem;
             background: transparent;
-            color: var(--error);
-            border: 1px solid var(--error);
+            color: #ef4444;
+            border: 1px solid #ef4444;
             border-radius: 6px;
             font-size: 0.85rem;
             font-weight: 500;
@@ -163,12 +156,12 @@
         }
 
         .delete-btn:hover {
-            background: var(--error);
+            background: #ef4444;
             color: white;
         }
 
         .delete-btn:focus-visible {
-            outline: 2px solid var(--error);
+            outline: 2px solid #ef4444;
             outline-offset: 2px;
         }
 
@@ -176,7 +169,7 @@
         .empty-state {
             text-align: center;
             padding: 3rem 1rem;
-            color: var(--text-light);
+            color: #64748b;
         }
 
         .empty-state p {
@@ -186,17 +179,17 @@
 
         /* Stats */
         .stats {
-            color: var(--text-light);
+            color: #64748b;
             font-size: 0.85rem;
             margin-top: 1rem;
             padding-top: 1rem;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid #e2e8f0;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>My To-Do List</h1>
+        <h1>My <span class="highlight">To-Do List</span></h1>
 
         <form id="task-form" class="form-group">
             <input type="text" id="task-input" placeholder="Enter a task...">
