@@ -1,146 +1,383 @@
-<!-- TASK: TO-DO LIST MINI-PROJECT
-
-Topic: JavaScript DOM Manipulation and Events
-Level: Beginner
-Technology: HTML, CSS, JavaScript
-
-Objective
-Create a To-Do List web application using HTML, CSS, and JavaScript. The application should
-allow users to add tasks, mark tasks as completed, delete tasks, and save tasks in the browser
-using localStorage.
-
-Requirements
-1. HTML Structure
-    ● Create a heading named My To-Do List.
-    ● Add a text input field to enter a task.
-    ● Add an Add Task button.
-    ● Create an unordered list (<ul>) to display tasks.
-2. DOM Selection and Manipulation
-    ● Use document.getElementById() or document.querySelector() to select
-    HTML elements.
-    ● Use JavaScript to create new <li> elements dynamically.
-    ● Display the entered task inside the list.
-    ● Add a Delete button for each task.
-3. Events and addEventListener()
-    ● Use addEventListener() to handle the Add Task button click.
-    ● When the user enters a task and clicks Add Task, display the task in the list.
-    ● Allow users to mark a task as completed by clicking on it.
-4. Forms and Validation
-    ● Place the task input field inside an HTML form.
-    ● Prevent the default form submission using event.preventDefault().
-    ● Display an alert if the user tries to add an empty task.
-    ● Remove unnecessary spaces from the beginning and end of the entered task using trim().
-5. Event Delegation
-    ● Attach only one event listener to the parent <ul> element to handle task interactions.
-    ● Use event.target to identify whether the user clicked a task or its Delete button.
-    ● Allow newly added tasks to work without attaching separate event listeners to each task.
-6. localStorage
-    ● Save the task list in the browser using localStorage.
-    ● Retrieve and display saved tasks when the page is refreshed or reopened.
-    ● Update localStorage whenever a task is added, completed, or deleted.
-
-Expected Output
-The application should look similar to this:
-My To-Do List
-Enter a task: [ Complete JavaScript notes ] [Add Task]
-    ● ☐ Complete JavaScript notes [Delete]
-    ● ☑ Practice DOM manipulation [Delete]
-    ● ☐ Study event delegation [Delete]
-Note: The checkboxes and buttons are only an illustration of the expected interface. Students
-may design their own layout.
-
-Expected Behaviour
-    1. When the user enters a task and clicks Add Task, the task should appear in the list.
-    2. If the input is empty, an alert should be displayed.
-    3. When the user clicks a task, it should be marked as completed or changed back to pending.
-    4. When the user clicks Delete, the selected task should be removed.
-    5. After refreshing the page, all previously saved tasks should still be displayed.
-    6. Changes to tasks must be saved automatically in localStorage.
-
-Restrictions
-    ● Do not use any JavaScript libraries or frameworks.
-    ● Do not use inline event handlers such as onclick.
-    ● Use addEventListener() for event handling.
-    ● Use event delegation for handling task interactions.
-    ● Use localStorage to persist the tasks.
-
-Bonus Challenges
-    ● Display the total number of tasks.
-    ● Display the number of completed and pending tasks.
-    ● Add a Clear All Tasks button.
-    ● Add separate filters for All, Completed, and Pending tasks.
-
-Submission: Submit the HTML, CSS, and JavaScript files along with a screenshot of the completed application. -->
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --secondary: #1e293b;
+            --accent: #f97316;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --background: #f8fafc;
+            --card: #ffffff;
+            --border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            margin: 0;
+            padding: 2rem;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+        }
+
+        /* Form styling */
+        .form-group {
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .form-group input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: 8px 0 0 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+
+        .form-group input::placeholder {
+            color: var(--text-light);
+        }
+
+        .form-group button {
+            padding: 0 1.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .form-group button:hover {
+            background: var(--primary-dark);
+        }
+
+        .form-group button:active {
+            transform: scale(0.98);
+        }
+
+        .form-group button:focus-visible {
+            outline: 2px solid var(--primary-dark);
+            outline-offset: 2px;
+        }
+
+        /* Task list */
+        #task-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #task-list li {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        #task-list li:hover {
+            border-color: var(--primary);
+            transform: translateX(4px);
+        }
+
+        #task-list li.completed {
+            opacity: 0.7;
+            text-decoration: line-through;
+        }
+
+        #task-list li.completed .task-text {
+            text-decoration: line-through;
+        }
+
+        /* Task content */
+        .task-checkbox {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            cursor: pointer;
+            accent-color: var(--primary);
+        }
+
+        .task-text {
+            flex: 1;
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+        .task-text.completed {
+            text-decoration: line-through;
+            color: var(--text-light);
+        }
+
+        /* Delete button */
+        .delete-btn {
+            padding: 0.4rem 0.8rem;
+            background: transparent;
+            color: var(--error);
+            border: 1px solid var(--error);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .delete-btn:hover {
+            background: var(--error);
+            color: white;
+        }
+
+        .delete-btn:focus-visible {
+            outline: 2px solid var(--error);
+            outline-offset: 2px;
+        }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-light);
+        }
+
+        .empty-state p {
+            margin: 0.5rem 0 0;
+            font-size: 0.95rem;
+        }
+
+        /* Stats */
+        .stats {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .form-group {
+                flex-direction: column;
+            }
+
+            .form-group input {
+                border-radius: 8px;
+                border-bottom: none;
+            }
+
+            .form-group button {
+                border-radius: 0 0 8px 8px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>My To-Do List</h1>
-    <form id="task-form">
-        <input type="text" id="task-input" placeholder="Enter a task">
-        <button type="submit" id="addTask">Add Task</button>
-    </form>
-    <ul id="task-list"></ul>
+    <div class="container">
+        <h1>My To-Do List</h1>
 
-<script>
-    
-    let taskForm = document.getElementById('task-form');
-    let taskInput = document.getElementById('task-input');
-    let taskList = document.getElementById('task-list');
+        <form id="task-form" class="form-group">
+            <input type="text" id="task-input" placeholder="Enter a task...">
+            <button type="submit" id="addTask">Add Task</button>
+        </form>
 
-    taskForm.addEventListener('submit', function(event) {
-        event.preventDefault();
+        <ul id="task-list"></ul>
 
-        let taskText = taskInput.value.trim();
+        <div class="stats" id="stats">
+            <span id="total-tasks">0</span> tasks
+            <span id="completed-tasks">0</span> completed
+        </div>
+    </div>
 
-        if (taskText === '') {
-            alert('Please enter a task.');
-            return;
+    <script>
+        // Initialize from localStorage or set up empty state
+        let tasks = JSON.parse(localStorage.getItem('todo-list')) || [];
+
+        // DOM elements
+        const taskForm = document.getElementById('task-form');
+        const taskInput = document.getElementById('task-input');
+        const taskList = document.getElementById('task-list');
+        const totalTasksEl = document.getElementById('total-tasks');
+        const completedTasksEl = document.getElementById('completed-tasks');
+
+        // Render tasks to the DOM
+        function renderTasks() {
+            taskList.innerHTML = '';
+
+            if (tasks.length === 0) {
+                taskList.innerHTML = `
+                    <li class="empty-state">
+                        <p>No tasks yet. Add one above!</p>
+                    </li>
+                `;
+                updateStats();
+                return;
+            }
+
+            tasks.forEach((task, index) => {
+                const li = document.createElement('li');
+                li.className = task.completed ? 'completed' : '';
+                li.dataset.index = index;
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.className = 'task-checkbox';
+                checkbox.checked = task.completed;
+
+                const taskText = document.createElement('span');
+                taskText.className = 'task-text' + (task.completed ? ' completed' : '');
+                taskText.textContent = task.text;
+
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'delete-btn';
+                deleteBtn.textContent = 'Delete';
+                deleteBtn.dataset.index = index;
+
+                li.appendChild(checkbox);
+                li.appendChild(taskText);
+                li.appendChild(deleteBtn);
+
+                taskList.appendChild(li);
+            });
+
+            updateStats();
         }
 
-        let newTask = document.createElement("li");
-
-        let taskName = document.createElement("span");
-        taskName.textContent = taskText;
-        
-        let checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-               
-        let deleteBtn = document.createElement("button");
-        deleteBtn.textContent = "Delete";
-        
-        newTask.appendChild(checkbox);
-        newTask.appendChild(taskName);
-        newTask.appendChild(deleteBtn);
-
-        taskList.appendChild(newTask);
-        taskInput.value = '';
-        
-    });
-
-    taskList.addEventListener('click', function(event) {
-        if (event.target.tagName === 'BUTTON') {
-            let taskSelected = event.target.parentElement.querySelector('span').textContent;
-            console.log('Task', taskSelected,'Deleted.');
-            let deleteTask = event.target.parentElement;
-            deleteTask.remove();
+        // Save tasks to localStorage
+        function saveTasks() {
+            localStorage.setItem('todo-list', JSON.stringify(tasks));
         }
-    });
 
-    taskList.addEventListener('change', function(event) {
-        if (event.target.type === 'checkbox') {
-             let taskSelected = event.target.parentElement.querySelector('span').textContent;
-            console.log('Task name:', taskSelected,'| Checkbox status =', event.target.checked);
+        // Update stats display
+        function updateStats() {
+            const total = tasks.length;
+            const completed = tasks.filter(t => t.completed).length;
+            totalTasksEl.textContent = total;
+            completedTasksEl.textContent = completed;
         }
-    });
 
-</script>
+        // Add a new task
+        function addTask(text) {
+            const trimmedText = text.trim();
+            if (!trimmedText) {
+                alert('Please enter a task.');
+                return;
+            }
 
+            tasks.push({
+                text: trimmedText,
+                completed: false
+            });
+
+            saveTasks();
+            renderTasks();
+            taskInput.value = '';
+        }
+
+        // Toggle task completion
+        function toggleTask(index) {
+            tasks[index].completed = !tasks[index].completed;
+            saveTasks();
+            renderTasks();
+        }
+
+        // Delete a task
+        function deleteTask(index) {
+            tasks.splice(index, 1);
+            saveTasks();
+            renderTasks();
+        }
+
+        // Event delegation for task list - click for delete, change for checkbox
+        taskList.addEventListener('click', function(event) {
+            const li = event.target.closest('li');
+
+            if (!li) return;
+
+            // Delete button
+            if (event.target.classList.contains('delete-btn')) {
+                const index = parseInt(event.target.dataset.index);
+                deleteTask(index);
+                return;
+            }
+
+            // Task text click - toggle completion
+            if (event.target.classList.contains('task-text')) {
+                const index = parseInt(li.dataset.index);
+                toggleTask(index);
+            }
+        });
+
+        // Handle checkbox changes
+        taskList.addEventListener('change', function(event) {
+            if (event.target.classList.contains('task-checkbox')) {
+                const li = event.target.closest('li');
+                if (li) {
+                    const index = parseInt(li.dataset.index);
+                    toggleTask(index);
+                }
+            }
+        });
+
+        // Form submit
+        taskForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            addTask(taskInput.value);
+        });
+
+        // Initialize
+        renderTasks();
+    </script>
 </body>
 </html>
