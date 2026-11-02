@@ -1,4 +1,4 @@
-const API_KEY = '62b154c9eac7716f1bb184baf2b15293'; 
+const API_KEY = window.WEATHER_API_KEY;
 const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -35,6 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   async function fetchWeatherData(city) {
+    if (!API_KEY) {
+      throw new Error('The weather API key is missing. Check config.js.');
+    }
+
     const url = `${BASE_URL}?q=${encodeURIComponent(city)}&units=metric&appid=${API_KEY}`;
 
     const response = await fetch(url);
@@ -42,6 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!response.ok) {
       if (response.status === 404) {
         throw new Error('City not found. Please enter a valid city name.');
+      }
+      if (response.status === 401) {
+        throw new Error('The weather API key was rejected. Check your OpenWeather account.');
       }
       throw new Error('Failed to fetch weather data. Please try again.');
     }
