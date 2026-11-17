@@ -1,5 +1,4 @@
 import CounterApp from "./components/CounterApp";
-import Calculator from "./components/Calculator";
 
 function App() {
 return (
@@ -7,7 +6,6 @@ return (
     <main>
       <h1>Welcome Students</h1>
       <CounterApp />
-      <Calculator />
     </main>
   </div>
   )

@@ -13,6 +13,7 @@ import StudentProfile from'./components/StudentProfile.jsx'
 import CounterApp from './components/CounterApp.jsx'
 import StudentList from './components/StudentList.jsx'
 import ShowHideApp from './components/ShowHideApp.jsx'
+import Calculator from "./components/Calculator";
 
 
 createRoot(document.getElementById('root')).render(
@@ -30,6 +31,7 @@ createRoot(document.getElementById('root')).render(
     <CounterApp/>
     <StudentList/>
     <ShowHideApp/>
+    <Calculator/>
     {/* <Footer /> */}
   </StrictMode>,
 )

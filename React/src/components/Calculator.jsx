@@ -2,14 +2,14 @@ import { useState } from "react";
 import "../Calculator.css";
 
 function Calculator() {
-    const [num1, setNum1] = useState(0);
-    const [num2, setNum2] = useState(0);
+    const [num1, setNum1] = useState("");
+    const [num2, setNum2] = useState("");
     const [result, setResult] = useState(0);
 
-    const Addition = () => {setResult(num1 + num2);};
-    const Subtraction = () => {setResult(num1 - num2);};
-    const Multiplication = () => {setResult(num1 * num2);};
-    const Division = () => {setResult(num1 / num2);};
+    const Addition = () => {setResult(Number(num1) + Number(num2));};
+    const Subtraction = () => {setResult(Number(num1) - Number(num2));};
+    const Multiplication = () => {setResult(Number(num1) * Number(num2));};
+    const Division = () => {setResult(Number(num1) / Number(num2));};
 
     return (
         <div className="calculator">
@@ -21,14 +21,14 @@ function Calculator() {
                     type="number"
                     placeholder="Enter first number"
                     value={num1}
-                    onChange={(e) => setNum1(Number(e.target.value))}
+                    onChange={(e) => setNum1(e.target.value)}
                 />
                 <input
                     className="input-box"
                     type="number"
                     placeholder="Enter second number"
                     value={num2}
-                    onChange={(e) => setNum2(Number(e.target.value))}
+                    onChange={(e) => setNum2(e.target.value)}
                 />
             </div>
 
