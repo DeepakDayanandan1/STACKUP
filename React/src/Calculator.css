@@ -1,0 +1,73 @@
+/* Calculator component styles */
+
+.calculator {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.calculator h2 {
+  margin: 0;
+}
+
+.calc-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.calc-inputs .input-box {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--code-bg);
+  color: var(--text-h);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.calc-inputs .input-box:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+.calc-actions {
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.calc-actions .btn {
+  flex: 1 1 calc(50% - 5px);
+  padding: 10px 12px;
+  font-size: 15px;
+  transition: filter 0.15s ease, transform 0.05s ease;
+}
+
+.calc-actions .btn:hover {
+  filter: brightness(1.1);
+}
+
+.calc-actions .btn:active {
+  transform: translateY(1px);
+}
+
+.calc-result {
+  padding: 12px;
+  border-radius: 8px;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  color: var(--text-h);
+  font-family: var(--mono);
+  font-size: 16px;
+}
+
+.calc-result strong {
+  color: var(--accent);
+  font-size: 20px;
+}

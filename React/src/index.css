@@ -146,3 +146,18 @@ footer {
   border-radius: 4px;
   width: 200px;
 }
+
+.btn-group{
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;  
+}
+
+.search-input {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  width: 250px;
+}
