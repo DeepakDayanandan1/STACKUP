@@ -1,17 +1,24 @@
-import { useState } from "react";
-
+import { useState, useEffect } from "react"
 function Counter() {
-    const [name, setName] = useState("Hello ");
-
-    return (
-        <div>
-            <button className="btn" onClick={() => setName("Hello, Deepak ")}>
-               {name}
-            </button>
-        </div>
-    );
+    const [increaseCount, setIncreaseCount] = useState(0)
+    const [decreaseCount, setDecreaseCount] = useState(0)
+    useEffect(() => {
+        console.log("Increase count changed:", increaseCount)
+    },[increaseCount])
+    useEffect(() => {
+        console.log("Decrease count changed:", decreaseCount)
+    }, [decreaseCount])    
+ return (
+    <div>
+        <h1>{increaseCount}</h1>
+        <button className="btn" onClick={() => setIncreaseCount(increaseCount + 1)}>
+            Increase
+        </button>
+        <h1>{decreaseCount}</h1>
+        <button className="btn" onClick={() => setDecreaseCount(decreaseCount - 1)}>
+            Decrease
+        </button>        
+    </div>
+ )
 }
-
-export default Counter;
-
-
+export default Counter
