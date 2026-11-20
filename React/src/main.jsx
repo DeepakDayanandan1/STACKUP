@@ -20,7 +20,6 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     {/* <Header />
     <App /> 
-    <Counter />
     <Toggle/>
     <Submit/>
     <Onchange/> 
