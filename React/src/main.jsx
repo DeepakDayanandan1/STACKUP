@@ -1,7 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import Counter from './components/Counter.jsx'
 /* import App from './App.jsx'
 import Header from './Header.jsx' 
 import Footer from './Footer.jsx'
@@ -14,6 +13,8 @@ import CounterApp from './components/CounterApp.jsx'
 import StudentList from './components/StudentList.jsx'
 import ShowHideApp from './components/ShowHideApp.jsx'
 import Calculator from "./components/Calculator"; */
+import Counter from './components/Counter.jsx'
+import WelcomeMessage from './components/WelcomeMessage.jsx'
 
 
 createRoot(document.getElementById('root')).render(
@@ -33,5 +34,6 @@ createRoot(document.getElementById('root')).render(
     <Calculator/> 
     <Footer /> */}
     <Counter/>
+    <WelcomeMessage/>
   </StrictMode>,
 )
