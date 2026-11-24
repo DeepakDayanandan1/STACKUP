@@ -1,19 +1,20 @@
-# React + Vite
+# Daynote
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A calm, responsive notes app built with React and Vite. Create, edit, search, and delete notes, with changes saved in your browser.
 
-Currently, two official plugins are available:
+## Run locally
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```sh
+npm install
+npm run dev
+```
 
-## React Compiler
+## Features
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- Create, edit, and delete notes, with confirmation before deleting.
+- Search notes by title and see helpful empty and no-results states.
+- Keep notes after refreshing with browser `localStorage`.
+- See note totals, created dates, and description character counts.
+- Choose a note color, sort newest notes first, or delete all notes.
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Notes are stored only in the current browser and are not sent to a server.
