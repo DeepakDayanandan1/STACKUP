@@ -1,8 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-/* import App from './App.jsx'
-import Header from './Header.jsx' 
+/* import Header from './Header.jsx' 
 import Footer from './Footer.jsx'
 import Toggle from './components/Toggle.jsx'
 import Submit from './components/Submit.jsx'
@@ -12,15 +11,15 @@ import StudentProfile from'./components/StudentProfile.jsx'
 import CounterApp from './components/CounterApp.jsx'
 import StudentList from './components/StudentList.jsx'
 import ShowHideApp from './components/ShowHideApp.jsx'
-import Calculator from "./components/Calculator"; */
+import Calculator from "./components/Calculator"; 
 import Counter from './components/Counter.jsx'
-import WelcomeMessage from './components/WelcomeMessage.jsx'
+import WelcomeMessage from './components/WelcomeMessage.jsx' */
+import App from './App.jsx'
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     {/* <Header />
-    <App /> 
     <Toggle/>
     <Submit/>
     <Onchange/> 
@@ -32,8 +31,9 @@ createRoot(document.getElementById('root')).render(
     <StudentList/>
     <ShowHideApp/>
     <Calculator/> 
-    <Footer /> */}
+    <Footer /> 
     <Counter/>
-    <WelcomeMessage/>
+    <WelcomeMessage/> */}
+    <App/>
   </StrictMode>,
 )
